@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>میز تحلیل فارکس</title>
+  <link rel="stylesheet" href="/static/forex.css">
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="/">← گفت‌وگو</a>
+  <h1>میز تحلیل فارکس</h1>
+  <span class="chip" id="mt5Chip">MT5: در حال بررسی…</span>
+</header>
+
+<main class="wrap">
+  <section class="card controls" aria-label="تنظیمات تحلیل">
+    <div class="row">
+      <label class="field">
+        <span>جفت‌ارز</span>
+        <input id="symbol" list="symbols" value="EURUSD" autocomplete="off" spellcheck="false" maxlength="40">
+        <datalist id="symbols">
+          <option value="EURUSD"><option value="GBPUSD"><option value="USDJPY"><option value="XAUUSD">
+          <option value="AUDUSD"><option value="USDCAD"><option value="USDCHF"><option value="NZDUSD">
+          <option value="EURJPY"><option value="GBPJPY"><option value="EURGBP"><option value="XAGUSD">
+        </datalist>
+      </label>
+      <div class="field">
+        <span>تایم‌فریم معامله</span>
+        <div class="seg" id="tfSeg" role="radiogroup" aria-label="تایم‌فریم معامله"></div>
+      </div>
+      <button id="run" class="primary" type="button">تحلیل</button>
+    </div>
+    <div class="row sub">
+      <label class="check"><input type="checkbox" id="useVision" checked> خوانش چارت با مدل بینایی</label>
+      <label class="check"><input type="checkbox" id="newsOn" checked> تقویم خبری (هشدار خبر مهم)</label>
+      <label class="field small"><span>مدل بینایی</span><select id="visionModel"></select></label>
+      <label class="field small"><span>مدل گزارش‌نویس</span><select id="textModel"></select></label>
+      <span class="hint" id="planHint"></span>
+    </div>
+  </section>
+
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+
+  <div id="results" hidden>
+    <section class="card decision" id="decision" hidden></section>
+    <section class="card summary" id="summary"></section>
+
+    <div class="grid2">
+      <section class="card" id="probCard"></section>
+      <section class="card" id="chartCard"></section>
+    </div>
+
+    <section class="card">
+      <h2>سناریوهای معاملاتی (شرطی، با احتمال تجربی)</h2>
+      <div class="scenarios" id="scenarios"></div>
+    </section>
+
+    <section class="card">
+      <h2>نمای چندتایم‌فریمی</h2>
+      <div class="tablewrap"><table id="frames"></table></div>
+    </section>
+
+    <section class="card narrative">
+      <h2>گزارش تحلیلگر</h2>
+      <div class="prose" id="narrative"></div>
+      <form class="ask" id="askForm">
+        <input id="askInput" placeholder="پرسش بعدی؛ مثلاً: اگر H1 زیر حمایت بسته شود چه؟" maxlength="600" autocomplete="off">
+        <button class="primary" type="submit" id="askBtn">بپرس</button>
+      </form>
+    </section>
+  </div>
+
+  <p class="foot">درصدها فراوانی تجربی روی تاریخچهٔ همین نماد در MetaTrader 5 هستند، نه تضمین. تقویم اقتصادی و خبر در داده نیست. آموزشی است و توصیهٔ مالی نیست.</p>
+</main>
+<script src="/static/forex.js"></script>
+</body>
+</html>
